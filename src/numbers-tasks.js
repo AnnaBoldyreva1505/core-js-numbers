@@ -184,7 +184,8 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return Math.round(num * 10 ** pow) / 10 ** pow;
+  const mathPow = 10 ** pow;
+  return Math.round(num / mathPow) * mathPow;
 }
 
 /**
@@ -276,8 +277,11 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index === 0 || index === 1) {
+    return index;
+  }
+  return getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2);
 }
 
 /**
@@ -324,8 +328,20 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num <= 0) {
+    return false;
+  }
+
+  let PowerOfTwo = 1;
+  while (PowerOfTwo < num) {
+    PowerOfTwo *= 2;
+  }
+
+  if (PowerOfTwo === num) {
+    return true;
+  }
+  return false;
 }
 
 /**
